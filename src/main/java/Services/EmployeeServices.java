@@ -10,8 +10,8 @@ public class EmployeeServices {
 	public static List<Employee> list=new ArrayList<>();
 	
 	public void loadData(){
-		Employee e1= new Employee(1,"aaa","aaa","123",true,10000,"aaa");
-		Employee e2= new Employee(2,"bbb","bbb","123",false,12000,"bbb");
+		Employee e1= new Employee(101,"Chirag","tongia","123",true,25300,"chirag");
+		Employee e2= new Employee(102,"abhishek","patidar","123",false,12000,"abhishek");
 		list.add(e1);
 		list.add(e2);
 	}
@@ -24,5 +24,29 @@ public class EmployeeServices {
 	}
 	public boolean addEmployee(Employee emp) {
 		return list.add(emp);
+	}
+	public List<Employee> getData(){
+		return list;
+	}
+	public void update(Employee emp) {
+		Optional<Employee> employee = list.stream().filter(e->e.getId()==emp.getId()).findFirst();
+		if(employee.isPresent()) {
+//			list.remove(employee.get());
+			list.stream().filter(e->e.getId()==emp.getId()).forEach(e->{
+					e.setFirstName(emp.getFirstName());
+					e.setLastName(emp.getLastName());
+					e.setUserName(emp.getUserName());
+					e.setPassword(emp.getPassword());
+					e.setSal(emp.getSal());
+					e.setAdmin(emp.isAdmin());});
+		}else {
+			return ;
+		}
+	}
+	public void deleteEmp(Employee emp) {
+		Optional<Employee> employee = list.stream().filter(e->e.getId()==emp.getId()).findFirst();
+		if(employee.isPresent()) {
+			list.remove(employee.get());
+		}
 	}
 }

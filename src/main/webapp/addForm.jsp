@@ -12,12 +12,12 @@
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
 
-<title>Hello, world!</title>
+<title>Hello</title>
 </head>
 <body class="container text-center">
-	<h1>Hello, world!</h1>
+	<h1>Hello <%= %>>!</h1>
 	<form action="AddEmp" method="post">
-	<div class="card " style="width: 50rem;">
+	<div class="card " style="width: 150rem;">
 		<div class="card-body">
 			<h5 class="card-title"></h5>
 			<p class="card-text">
@@ -45,7 +45,9 @@
 					</tr>
 					<tr>
 						<th scope="row">IsAdmin</th>
-							<td><input class="form-control" type="checkbox" name="isAdmin" value="true" ></td>
+							<td><input class="form-control" type="radio" name="isAdmin" value="true" >true
+							<input class="form-control" type="radio" name="isAdmin" value="false" >false
+							</td>
 					</tr>
 					<tr>
 						<th scope="row">User Name</th>

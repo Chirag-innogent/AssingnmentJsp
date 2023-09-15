@@ -22,7 +22,7 @@
 	<%message= (String)request.getAttribute("msg");
 		if(message!= null){
 	%>
-	<h4><%=message %></h4>
+	<h4 class=" alert alert-secondary"><%=message %></h4>
 	<%} %>
 	<h1 class="text-center">Login Form</h1>
 		<form action="LoginServlet" method="post">

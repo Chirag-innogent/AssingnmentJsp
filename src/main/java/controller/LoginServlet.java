@@ -33,7 +33,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.sendRedirect("login.jsp");
 	}
 
 	/**
@@ -52,16 +52,16 @@ public class LoginServlet extends HttpServlet {
 				if(emp.isAdmin())
 				request.setAttribute("list", es.list);
 				
-				HttpSession session= request.getSession();
+				HttpSession session= request.getSession(true);
 				session.setAttribute("emp", emp);
+				session.setAttribute("list", es.list);
 				
-				rd= request.getRequestDispatcher("home.jsp");
-				rd.include(request, response);
+				response.sendRedirect("home.jsp");
 			}else {
 				request.setAttribute("msg", "Invalid UserName or Password");
 				
 				rd= request.getRequestDispatcher("login.jsp");
-				rd.include(request, response);
+				rd.forward(request, response);
 			}
 		}
 		
