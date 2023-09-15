@@ -31,9 +31,10 @@
 		response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
 		response.setHeader("Progma", "no-cache");
 		response.setHeader("Expires", "0");
-		if (session.getAttribute("emp") == null) {
+		if (session.getAttribute("emp") == null ) {
 			System.out.println("No object found");
-			request.getRequestDispatcher("login.jsp").forward(request, response);
+			request.getRequestDispatcher("login.jsp").forward(request, response);		
+
 		}
 		emp = (Employee) session.getAttribute("emp");
 		System.out.print("*****************");

@@ -41,8 +41,12 @@ public class AddEmp extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		session= request.getSession();
+		
+		session= request.getSession(false);
+	
 		Employee employee=(Employee)session.getAttribute("emp");
+		if(employee==null)
+			request.getRequestDispatcher("login.jsp").forward(request, response);
 		int id=Integer.parseInt(request.getParameter("id")) ;
 		List <Employee> list= es.getData();
 		Optional<Employee> delete=list.stream().filter(e->e.getId()==id).findFirst();
@@ -54,8 +58,9 @@ public class AddEmp extends HttpServlet {
 			request.setAttribute("msg", "Successfully Deleted");
 		}
 		request.setAttribute("list", es.getData());
-		rd = request.getRequestDispatcher("home.jsp");
-		rd.forward(request, response);
+//		rd = request.getRequestDispatcher("home.jsp");
+//		rd.forward(request, response);
+		response.sendRedirect("home.jsp");
 	}
 
 	/**
@@ -111,8 +116,9 @@ public class AddEmp extends HttpServlet {
 			
 		}
 		request.setAttribute("list", es.getData());
-		rd = request.getRequestDispatcher("home.jsp");
-		rd.forward(request, response);
-	
+//		rd = request.getRequestDispatcher("home.jsp");
+//		rd.forward(request, response);
+
+		response.sendRedirect("home.jsp");	
 	}
 }
